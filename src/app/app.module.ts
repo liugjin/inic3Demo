@@ -1,12 +1,17 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler,Config} from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { IonicStorageModule } from '@ionic/storage';
+import { ComponentsModule } from '../modules/index';
+import {
+  ModalFromBottomEnter, ModalFromBottomLeave, ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter,
+  ModalScaleLeave
+} from './modal-transitions';
 /**
  * 导入4个外部加载的组件
  * 安装方法
@@ -30,6 +35,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   imports: [
     BrowserModule,
     HttpModule, //全局需要导入 HTTP
+    ComponentsModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回',
     }),
@@ -51,4 +57,16 @@ import { TabsPage } from '../pages/tabs/tabs';
     Camera,
   ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public config: Config) {
+    this.setCustomTransitions();
+  }
+  private setCustomTransitions() {
+    this.config.setTransition('modal-from-right-enter', ModalFromRightEnter);
+    this.config.setTransition('modal-from-right-leave', ModalFromRightLeave);
+    this.config.setTransition('modal-from-bottom-enter', ModalFromBottomEnter);
+    this.config.setTransition('modal-from-bottom-leave', ModalFromBottomLeave);
+    this.config.setTransition('modal-scale-enter', ModalScaleEnter);
+    this.config.setTransition('modal-scale-leave', ModalScaleLeave);
+  }
+}
