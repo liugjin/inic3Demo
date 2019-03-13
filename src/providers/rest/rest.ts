@@ -4,12 +4,6 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-/*
-  Generated class for the RestProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class RestProvider {
 
@@ -48,12 +42,32 @@ export class RestProvider {
     return this.getUrlReturn(this.apiUrlLogin + "?mobile=" + mobile + "&password=" + password);
   }
 
+
+/**
+ * 获取用户信息
+ * @param userId 
+ */
   getUserInfo(userId): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlUserInfo + "?userid=" + userId);
   }
 
+  /**
+   * 更新用户的昵称
+   * @param userId 
+   * @param nickname 
+   */
   updateNickName(userId, nickname): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname);
+  }
+  
+/**
+ * 保存提问
+ * @param userId 
+ * @param title 
+ * @param content 
+ */
+  saveQuestion(userId, title, content): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlQuestionSave + "?userid=" + userId + "&title=" + title + "&content=" + content);
   }
 
 
