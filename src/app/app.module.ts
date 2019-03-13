@@ -1,17 +1,16 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler,Config} from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, Config } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { IonicStorageModule } from '@ionic/storage';
-import { ComponentsModule } from '../modules/index';
-import {
-  ModalFromBottomEnter, ModalFromBottomLeave, ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter,
-  ModalScaleLeave
-} from './modal-transitions';
+/**
+ * 导入Modal 动画库
+ */
+import { ModalFromLeftEnter, ModalFromLeftLeave, ModalFromRightEnter, ModalFromRightLeave, ModalFromTopEnter, ModalFromTopLeave, ModalFromBottomEnter, ModalFromBottomLeave, ModalScaleEnter, ModalScaleLeave } from './modal-transitions';
 /**
  * 导入4个外部加载的组件
  * 安装方法
@@ -35,7 +34,6 @@ import { TabsPage } from '../pages/tabs/tabs';
   imports: [
     BrowserModule,
     HttpModule, //全局需要导入 HTTP
-    ComponentsModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回',
     }),
@@ -62,8 +60,15 @@ export class AppModule {
     this.setCustomTransitions();
   }
   private setCustomTransitions() {
+    /**
+     * 定义调用Modal 的过渡方式
+     */
+    this.config.setTransition('modal-from-left-enter', ModalFromLeftEnter);
+    this.config.setTransition('modal-from-left-leave', ModalFromLeftLeave);
     this.config.setTransition('modal-from-right-enter', ModalFromRightEnter);
     this.config.setTransition('modal-from-right-leave', ModalFromRightLeave);
+    this.config.setTransition('modal-from-top-enter', ModalFromTopEnter);
+    this.config.setTransition('modal-from-top-leave', ModalFromTopLeave);
     this.config.setTransition('modal-from-bottom-enter', ModalFromBottomEnter);
     this.config.setTransition('modal-from-bottom-leave', ModalFromBottomLeave);
     this.config.setTransition('modal-scale-enter', ModalScaleEnter);

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, ModalController, Modal } from 'ionic-angular';
-import { CModalComponent, CModalRightComponent } from '../../modules/components/index';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -21,7 +20,7 @@ export class HomePage {
 
 
   openModal() {
-    this.mds = this.modalCtrl.create(CModalComponent, {
+    this.mds = this.modalCtrl.create("CModalPage", {
       navigationDockId: 1
     }, {
         showBackdrop: true,
@@ -38,12 +37,11 @@ export class HomePage {
   }
 
   openModalFromRight() {
-    this.mds = this.modalCtrl.create(CModalRightComponent, {
+    this.mds = this.modalCtrl.create("ModalFromRightPage", {
       navigationDockId: 1
     }, {
         showBackdrop: true,
         enableBackdropDismiss: true,
-        // cssClass: 'custom-modal',
         enterAnimation: 'modal-from-right-enter',
         leaveAnimation: 'modal-from-right-leave'
       });
@@ -69,5 +67,9 @@ export class HomePage {
     } else {
       this.openModal();
     }
+  }
+
+  alloylever() {
+    this.navCtrl.push("AllowleverDemoPage");
   }
 }
