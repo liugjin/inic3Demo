@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, ModalController, Modal } from 'ionic-angular';
+import { Actionsheet2controllerProvider } from 'ionic-actionsheet2';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -9,7 +10,8 @@ export class HomePage {
   public mds: Modal;
   public showModal: boolean = false;
   constructor(public navCtrl: NavController,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    public act2controller: Actionsheet2controllerProvider, ) {
   }
 
   gotoQuestion() {
@@ -71,5 +73,43 @@ export class HomePage {
 
   alloylever() {
     this.navCtrl.push("AllowleverDemoPage");
+  }
+
+  share() {
+    this.act2controller.create({
+      buttons: [
+        {
+          text: '微信',
+          imgurl: "assets/imgs/weixinpic.png",
+          handler: () => {
+            console.log('1');
+          },
+        },
+        {
+          text: '微信朋友圈',
+          imgurl: "assets/imgs/weixinzone.png",
+          handler: () => {
+            console.log('2');
+          },
+        }, {
+          text: 'qq',
+          imgurl: "assets/imgs/qq.png",
+          handler: () => {
+            console.log('3');
+          }
+        }
+        , {
+          text: 'qq空间',
+          imgurl: "assets/imgs/qqzone.png",
+          handler: () => {
+            console.log('3');
+          }
+        },
+      ],
+    })
+  }
+  
+  calendar() {
+    this.navCtrl.push("CalendarDemoPage");
   }
 }

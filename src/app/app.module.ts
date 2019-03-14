@@ -26,6 +26,8 @@ import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
 import { TabsPage } from '../pages/tabs/tabs';
+import { ActionSheet2Module } from 'ionic-actionsheet2';
+import { CalendarModule } from 'ion2-calendar';
 @NgModule({
   declarations: [
     MyApp,
@@ -34,6 +36,8 @@ import { TabsPage } from '../pages/tabs/tabs';
   imports: [
     BrowserModule,
     HttpModule, //全局需要导入 HTTP
+    ActionSheet2Module,//全局导入分享组件
+    CalendarModule,//全局导入日期组件
     IonicModule.forRoot(MyApp, {
       backButtonText: '返回',
     }),
@@ -42,7 +46,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
