@@ -43,10 +43,10 @@ export class RestProvider {
   }
 
 
-/**
- * 获取用户信息
- * @param userId 
- */
+  /**
+   * 获取用户信息
+   * @param userId 
+   */
   getUserInfo(userId): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlUserInfo + "?userid=" + userId);
   }
@@ -59,13 +59,13 @@ export class RestProvider {
   updateNickName(userId, nickname): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlUpdateNickName + "?userid=" + userId + "&nickname=" + nickname);
   }
-  
-/**
- * 保存提问
- * @param userId 
- * @param title 
- * @param content 
- */
+
+  /**
+   * 保存提问
+   * @param userId 
+   * @param title 
+   * @param content 
+   */
   saveQuestion(userId, title, content): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlQuestionSave + "?userid=" + userId + "&title=" + title + "&content=" + content);
   }
@@ -82,6 +82,14 @@ export class RestProvider {
    */
   register(mobile, nickname, password): Observable<string[]> {
     return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password)
+  }
+
+  /**
+   * 请求首页的Feeds流
+   */
+
+  getFeeds(): Observable<string[]> {
+    return this.getUrlReturn(this.apiUrlFeeds);
   }
 
   /**

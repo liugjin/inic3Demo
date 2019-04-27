@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController } from 'ionic-angular';
 import { CalendarModal, CalendarModalOptions } from 'ion2-calendar';
+import { BaseUI } from '../../common/baseui';
 @IonicPage()
 @Component({
   selector: 'page-calendar-demo',
   templateUrl: 'calendar-demo.html',
 })
-export class CalendarDemoPage {
-
+export class CalendarDemoPage extends BaseUI {
   constructor(
     public modalCtrl: ModalController, ) {
+    super()
   }
 
   ionViewDidLoad() {
@@ -40,6 +41,11 @@ export class CalendarDemoPage {
     });
   }
 
-
+  openModalMenuFromRight1() {
+    super.openModal(this.modalCtrl, "ModalFromRightPage", "modal-from-right-enter", "modal-from-right-leave");
+  }
+  openModalMenuFromRight2() {
+    super.openModal(this.modalCtrl, "ModalFromRightPage", "modal-from-left-enter", "modal-from-left-leave");
+  }
 
 }

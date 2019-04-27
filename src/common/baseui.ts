@@ -1,4 +1,4 @@
-import { Loading, LoadingController, ToastController, Toast } from 'ionic-angular';
+import { Loading, LoadingController, ToastController, Toast, ModalController } from 'ionic-angular';
 
 /**
  * UI 层的所有公用方法的抽象类
@@ -47,5 +47,17 @@ export abstract class BaseUI {
         });
         toast.present();
         return toast;
+    }
+
+    protected openModal(modalCtrl: ModalController, component: string, enterAnimation: string, leaveAnimation: string) {
+        let mds = modalCtrl.create(component, { navigationDockId: 1 },
+            {
+                showBackdrop: true,
+                enableBackdropDismiss: true,
+                enterAnimation: enterAnimation,
+                leaveAnimation: leaveAnimation
+            })
+        mds.present();
+        return mds;
     }
 }

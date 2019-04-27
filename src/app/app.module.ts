@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { IonicStorageModule } from '@ionic/storage';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 /**
  * 导入Modal 动画库
  */
@@ -24,7 +25,6 @@ import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
-
 import { TabsPage } from '../pages/tabs/tabs';
 import { ActionSheet2Module } from 'ionic-actionsheet2';
 import { CalendarModule } from 'ion2-calendar';
@@ -57,6 +57,7 @@ import { CalendarModule } from 'ion2-calendar';
     Transfer,
     FilePath,
     Camera,
+    FingerprintAIO,
   ]
 })
 export class AppModule {
